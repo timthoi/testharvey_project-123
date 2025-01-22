@@ -91,8 +91,8 @@ export async function POST(req: NextRequest) {
     // Return success response
     return NextResponse.json({ message: 'Email sent successfully' }, { status: 200 });
   } catch (error) {
-    // Handle errors
-    console.error(error);
-    return NextResponse.json({ message: 'Failed to send email', error: error?.message || 'Unknown error' }, { status: 500 });
+    // Handle unexpected errors
+    console.error('Unknown error', error);
+    return NextResponse.json({ message: 'Failed to send email', error: 'Unknown error' }, { status: 500 });
   }
 }
